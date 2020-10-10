@@ -8,7 +8,7 @@ public class FileInputOutExample {
     OutputStream fileout = null;
     try {
       fileis = new FileInputStream("resources/lectie.txt");
-      fileout = new FileOutputStream("resources/outputbytes.txt");
+      fileout = new FileOutputStream("resources/output.txt");
       int c;
       while ((c = fileis.read()) != -1) {
         System.out.println(c);

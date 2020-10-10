@@ -1,0 +1,5 @@
+Astazi invatam Java I/O
+java.io package
+In java.io package gasim clase pentru a citi input cat si output
+avem clasele abstracte InputStream si OutputStream
+Inputstream si OutputStream stau la baza celorlalte
