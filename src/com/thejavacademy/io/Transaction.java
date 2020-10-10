@@ -7,8 +7,8 @@ public class Transaction implements Serializable {
   private String fromIban;
   private String toIban;
   private double amount;
-  private transient Bank fromBank;
-  private transient Bank toBank;
+  private  Bank fromBank;
+  private  Bank toBank;
 
   public static Builder newBuilder() {
     return new Builder();
