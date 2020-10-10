@@ -1,10 +1,12 @@
 package com.thejavacademy.io;
 
-public class Transaction {
+import java.io.Serializable;
+
+public class Transaction implements Serializable {
   private long id;
-  private String fromIban;
+  private transient String fromIban;
   private String toIban;
-  private double amount;
+  private  transient double amount;
 
   public long getId() {
     return id;
@@ -76,5 +78,15 @@ public class Transaction {
       transaction.toIban = this.toIban;
       return transaction;
     }
+  }
+
+  @Override
+  public String toString() {
+    return "Transaction{" +
+            "id=" + id +
+            ", fromIban='" + fromIban + '\'' +
+            ", toIban='" + toIban + '\'' +
+            ", amount=" + amount +
+            '}';
   }
 }
