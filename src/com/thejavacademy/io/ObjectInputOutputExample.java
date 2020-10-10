@@ -10,7 +10,8 @@ public class ObjectInputOutputExample {
             .id(System.currentTimeMillis())
             .fromIban("INGB4932432")
             .toIban("INGB5432432")
-            .bank("ING")
+            .fromBank("ING")
+            .toBank("RAIF")
             .amount(4324.3);
 
     Transaction transaction1 = builder.build();

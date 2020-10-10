@@ -2,7 +2,7 @@ package com.thejavacademy.io;
 
 import java.io.Serializable;
 
-public class Bank implements Serializable {
+public class Bank {
    private String name;
 
     public Bank(String name) {

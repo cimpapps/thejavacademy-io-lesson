@@ -4,10 +4,15 @@ import java.io.Serializable;
 
 public class Transaction implements Serializable {
   private long id;
-  private transient String fromIban;
+  private String fromIban;
   private String toIban;
-  private  transient double amount;
-  private Bank bank;
+  private double amount;
+  private transient Bank fromBank;
+  private transient Bank toBank;
+
+  public static Builder newBuilder() {
+    return new Builder();
+  }
 
   public long getId() {
     return id;
@@ -41,8 +46,24 @@ public class Transaction implements Serializable {
     this.amount = amount;
   }
 
-  public static Builder newBuilder() {
-    return new Builder();
+  @Override
+  public String toString() {
+    return "Transaction{"
+        + "id="
+        + id
+        + ", fromIban='"
+        + fromIban
+        + '\''
+        + ", toIban='"
+        + toIban
+        + '\''
+        + ", amount="
+        + amount
+        + ", fromBank="
+        + fromBank
+        + ", toBank="
+        + toBank
+        + '}';
   }
 
   public static class Builder {
@@ -50,7 +71,8 @@ public class Transaction implements Serializable {
     private String fromIban;
     private String toIban;
     private double amount;
-    private Bank bank;
+    private Bank fromBank;
+    private Bank toBank;
 
     public Builder id(long id) {
       this.id = id;
@@ -72,12 +94,15 @@ public class Transaction implements Serializable {
       return this;
     }
 
-
-    public Builder bank(String bank) {
-      this.bank = new Bank(bank);
+    public Builder fromBank(String bank) {
+      this.fromBank = new Bank(bank);
       return this;
     }
 
+    public Builder toBank(String bank) {
+      this.toBank = new Bank(bank);
+      return this;
+    }
 
     public Transaction build() {
       Transaction transaction = new Transaction();
@@ -85,20 +110,9 @@ public class Transaction implements Serializable {
       transaction.id = this.id;
       transaction.fromIban = this.fromIban;
       transaction.toIban = this.toIban;
-      transaction.bank = this.bank;
+      transaction.fromBank = this.fromBank;
+      transaction.toBank = this.toBank;
       return transaction;
     }
-  }
-
-
-  @Override
-  public String toString() {
-    return "Transaction{" +
-            "id=" + id +
-            ", fromIban='" + fromIban + '\'' +
-            ", toIban='" + toIban + '\'' +
-            ", amount=" + amount +
-            ", bank=" + bank +
-            '}';
   }
 }
