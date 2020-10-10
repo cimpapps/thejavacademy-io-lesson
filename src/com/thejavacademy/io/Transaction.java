@@ -7,6 +7,7 @@ public class Transaction implements Serializable {
   private transient String fromIban;
   private String toIban;
   private  transient double amount;
+  private Bank bank;
 
   public long getId() {
     return id;
@@ -49,6 +50,7 @@ public class Transaction implements Serializable {
     private String fromIban;
     private String toIban;
     private double amount;
+    private Bank bank;
 
     public Builder id(long id) {
       this.id = id;
@@ -70,15 +72,24 @@ public class Transaction implements Serializable {
       return this;
     }
 
+
+    public Builder bank(String bank) {
+      this.bank = new Bank(bank);
+      return this;
+    }
+
+
     public Transaction build() {
       Transaction transaction = new Transaction();
       transaction.amount = this.amount;
       transaction.id = this.id;
       transaction.fromIban = this.fromIban;
       transaction.toIban = this.toIban;
+      transaction.bank = this.bank;
       return transaction;
     }
   }
+
 
   @Override
   public String toString() {
@@ -87,6 +98,7 @@ public class Transaction implements Serializable {
             ", fromIban='" + fromIban + '\'' +
             ", toIban='" + toIban + '\'' +
             ", amount=" + amount +
+            ", bank=" + bank +
             '}';
   }
 }
