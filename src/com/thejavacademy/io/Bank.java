@@ -9,6 +9,7 @@ public class Bank implements Serializable {
     this.name = name;
   }
 
+
   @Override
   public String toString() {
     return "Bank{" + "name='" + name + '\'' + '}';
